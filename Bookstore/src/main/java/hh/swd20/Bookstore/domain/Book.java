@@ -1,16 +1,26 @@
 package hh.swd20.Bookstore.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+
 	// Attribuutit
 	private String title;
 	private String author;
 	private int year;
 	private String isbn;
-	private int price;
-	
+	private double price;
+
 	// Parametrillinen konstruktori
-	public Book(String title, String author, int year, String isbn, int price) {
+	public Book(String title, String author, int year, String isbn, double price) {
 		super();
 		this.title = title;
 		this.author = author;
@@ -30,6 +40,10 @@ public class Book {
 	}
 	
 	// Setterit
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -46,11 +60,15 @@ public class Book {
 		this.isbn = isbn;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	
 	// Getterit
+	public Long getId() {
+		return id;
+	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -67,14 +85,14 @@ public class Book {
 		return isbn;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	
+
 	// toString
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
-				+ "]";
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn
+				+ ", price=" + price + "]";
 	}
 }
