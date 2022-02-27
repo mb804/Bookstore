@@ -40,10 +40,10 @@ public class BookstoreApplication {
 			
 			
 			// BookRepository
-			bookRepository.save(new Book("The Golden Compass", "Philip Pullman", 1995, "A0123", 19.95));
-			bookRepository.save(new Book("The Subtle Knife", "Philip Pullman", 1997, "A0456", 19.95));
-			bookRepository.save(new Book("Murder on the Orient Express", "Agatha Christie", 1934, "B0789", 12.90));
-			bookRepository.save(new Book("Skulduggery Pleasant", "Derek Landy", 2007, "C0832", 8.95));
+			bookRepository.save(new Book("The Golden Compass", "Philip Pullman", 1995, "A0123", 19.95, category1));
+			bookRepository.save(new Book("The Subtle Knife", "Philip Pullman", 1997, "A0456", 19.95, category1));
+			bookRepository.save(new Book("Murder on the Orient Express", "Agatha Christie", 1934, "B0789", 12.95, category2));
+			bookRepository.save(new Book("Skulduggery Pleasant", "Derek Landy", 2007, "C0832", 8.95, category3));
 			
 			log.info("fetch all books"); // from database > SQL SELECT
 			for (Book book : bookRepository.findAll()) {

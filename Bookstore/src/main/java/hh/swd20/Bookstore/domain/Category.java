@@ -1,7 +1,11 @@
 package hh.swd20.Bookstore.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -14,6 +18,10 @@ public class Category {
 	// Attribuutit
 	private Long categoryid;
 	private String name;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category") // Category @OneToMany Book
+	// mappedBy -> viittaa Book-luokan siihen attribuuttiin (category), joka viittaa ko. luokkaan (Category)
+	private List<Book> books;
 	
 	// Parametrillinen konstruktori
 	public Category(String name) {
@@ -32,7 +40,11 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
+
 	// Getterit
 	public Long getCategoryid() {
 		return categoryid;
@@ -40,6 +52,10 @@ public class Category {
 
 	public String getName() {
 		return name;
+	}
+	
+	public List<Book> getBooks() {
+		return books;
 	}
 	
 	// toString
