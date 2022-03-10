@@ -6,6 +6,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -21,6 +24,8 @@ public class Category {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category") // Category @OneToMany Book
 	// mappedBy -> viittaa Book-luokan siihen attribuuttiin (category), joka viittaa ko. luokkaan (Category)
+	
+	@JsonIgnoreProperties ("category") // Yksi tapa välttää loputon silmukka JSON-serialisoinnin/deserialoinnin aikana kaksisuuntaisilla suhteilla
 	private List<Book> books;
 	
 	// Parametrillinen konstruktori

@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Book {
 	
@@ -22,6 +24,7 @@ public class Book {
 	private double price;
 	
 	@ManyToOne // Book @ManyToOne Category
+	@JsonIgnoreProperties ("books") // Yksi tapa välttää loputon silmukka JSON-serialisoinnin/deserialoinnin aikana kaksisuuntaisilla suhteilla
 	@JoinColumn(name = "categoryid") // Foreign key- määritys
 	private Category category;
 
