@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,6 +55,13 @@ public class BookController {
     public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookId) {
     	
     	return bookRepository.findById(bookId);
+    }
+    
+    // RESTful service to save new book
+    // POST = uuden tiedon lisäystä
+    @RequestMapping(value="/books", method = RequestMethod.POST)
+    public @ResponseBody Book saveBookRest(@RequestBody Book book) {	
+    	return bookRepository.save(book);
     }
 	
 	// http://localhost:8080/addbook
