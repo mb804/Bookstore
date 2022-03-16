@@ -44,7 +44,7 @@ public class CategoryController {
 	// http://localhost:8080/delete/{id}
 		@RequestMapping(value = "/deleteCategory/{id}", method = RequestMethod.GET)
 		// Vain ADMIN voi poistaa
-	    @PreAuthorize("hasRole('ADMIN')")
+	    @PreAuthorize("hasAuthority('ADMIN')")
 		public String deleteCategory(@PathVariable("id") Long categoryId, Model model) {
 			categoryRepository.deleteById(categoryId);
 			

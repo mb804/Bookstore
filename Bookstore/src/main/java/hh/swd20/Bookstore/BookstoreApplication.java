@@ -12,6 +12,8 @@ import hh.swd20.Bookstore.domain.Book;
 import hh.swd20.Bookstore.domain.BookRepository;
 import hh.swd20.Bookstore.domain.Category;
 import hh.swd20.Bookstore.domain.CategoryRepository;
+import hh.swd20.Bookstore.domain.User;
+import hh.swd20.Bookstore.domain.UserRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -22,7 +24,7 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository bookRepository, CategoryRepository categoryRepository) {
+	public CommandLineRunner bookDemo(BookRepository bookRepository, CategoryRepository categoryRepository, UserRepository userRepository) {
 		return (args) -> {
 			log.info("save a couple of books"); // Save to database > SQL INSERT
 			// CategoryRepository
@@ -38,12 +40,17 @@ public class BookstoreApplication {
 				log.info(category.toString());
 			}
 			
-			
 			// BookRepository
 			bookRepository.save(new Book("The Golden Compass", "Philip Pullman", 1995, "A0123", 19.95, category1));
 			bookRepository.save(new Book("The Subtle Knife", "Philip Pullman", 1997, "A0456", 19.95, category1));
 			bookRepository.save(new Book("Murder on the Orient Express", "Agatha Christie", 1934, "B0789", 12.95, category2));
 			bookRepository.save(new Book("Skulduggery Pleasant", "Derek Landy", 2007, "C0832", 8.95, category3));
+			
+			// Users: admin/admin user/user
+			User user1 = new User("user","$2a$10$d92Fxugbjr3iK2Sjs8dWaenudJ3mFs83FtXtunEAQzWxqdV6BlRJC", "user@email.com", "USER");
+			User user2 = new User("admin", "$2a$10$urRfgFp2RhQVh6wIZQ16R.70KKdrzoBuCqsDc8JmVEB5ca97e3lKu", "admin@email.com", "ADMIN");
+			userRepository.save(user1);
+			userRepository.save(user2);
 			
 			log.info("fetch all books"); // from database > SQL SELECT
 			for (Book book : bookRepository.findAll()) {

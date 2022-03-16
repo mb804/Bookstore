@@ -28,7 +28,7 @@
 		    <th>Price</th>
 		    <th>Category</th>
 		    <th></th>
-		    <th sec:authorize="hasRole('ADMIN')"></th>
+		    <th sec:authorize="hasAuthority('ADMIN')"></th>
 		</tr>
 		
     	<tr th:each = "book : ${books}">
@@ -41,7 +41,7 @@
     		
     		<!--  Vain ADMIN voi poistaa -->
     		<!--  Delete painike on piiloitettu -->
-    		<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
+    		<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
     		<td><a th:href="@{/editbook/{id}(id=${book.id})}" class="btn btn-success">Edit</a></td>
     	</tr>
      </table>
