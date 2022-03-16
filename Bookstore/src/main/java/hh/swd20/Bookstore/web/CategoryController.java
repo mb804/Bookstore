@@ -1,6 +1,7 @@
 package hh.swd20.Bookstore.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +43,8 @@ public class CategoryController {
 	
 	// http://localhost:8080/delete/{id}
 		@RequestMapping(value = "/deleteCategory/{id}", method = RequestMethod.GET)
+		// Vain ADMIN voi poistaa
+	    @PreAuthorize("hasRole('ADMIN')")
 		public String deleteCategory(@PathVariable("id") Long categoryId, Model model) {
 			categoryRepository.deleteById(categoryId);
 			
