@@ -35,7 +35,8 @@ public class Category {
 	}
 	
 	// Parametriton konstruktori
-	public Category() {}
+	public Category() {
+	}
 	
 	// Setterit
 	public void setCategoryid(Long categoryid) {

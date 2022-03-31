@@ -39,7 +39,7 @@ public class Book {
 		this.category = category;
 	}
 	
-	// Parametriton konstruktori
+	//Parametriton konstruktori
 	public Book() {
 	}
 	
