@@ -10,6 +10,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	
 	List<User> findByRole(String role);
 	
-	List<User> findByUsers(String username);
+	// Tämän takia testaukset eivät toimineet
+	//List<User> findByUsers(String username);
 	
 }

@@ -39,9 +39,9 @@ public class UserRepositoryTest {
 	
 	@Test // Testataan delete()-metodin toimivuutta
 	public void deleteUser() {
-		repository.delete(repository.findByUsers("user").get(0));
-		List<User> users = repository.findByUsers("user");
+		repository.delete(repository.findByUsername("user"));
+		User user = repository.findByUsername("user");
 		
-		assertThat(users).hasSize(0);
+		assertThat(user).isNull();
 	}
 }
