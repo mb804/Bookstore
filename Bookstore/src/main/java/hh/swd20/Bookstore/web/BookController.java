@@ -79,7 +79,7 @@ public class BookController {
 	public String saveBook(Book book) {
 		bookRepository.save(book);
 		
-		return "redirect:/booklist"; // return to redirect:/booklist.html
+		return "redirect:/booklist"; // return to /booklist endpoint
 	}
 	
 	// http://localhost:8080/delete/{id}
@@ -89,7 +89,7 @@ public class BookController {
 	public String deleteBook(@PathVariable("id") Long bookId, Model model) {
 		bookRepository.deleteById(bookId);
 		
-		return "redirect:/booklist"; // return to booklist.html
+		return "redirect:/booklist"; // return to /booklist endpoint
 	}
 	
 	// http://localhost:8080/editbook/{id}
@@ -98,6 +98,6 @@ public class BookController {
 		model.addAttribute("book", bookRepository.findById(bookId));
 		model.addAttribute("categories", categoryRepository.findAll());
 		
-		return "/editbook"; // editbook.html
+		return "editbook"; // editbook.html
 	}
 }

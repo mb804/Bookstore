@@ -38,7 +38,7 @@ public class CategoryController {
 	public String saveCategory(Category category) {
 		categoryRepository.save(category);
 			
-		return "redirect:/categorylist"; // return to categorylist.html
+		return "redirect:/categorylist"; // return to /categorylist endpoint
 	}
 	
 	// http://localhost:8080/delete/{id}
@@ -48,6 +48,6 @@ public class CategoryController {
 		public String deleteCategory(@PathVariable("id") Long categoryId, Model model) {
 			categoryRepository.deleteById(categoryId);
 			
-			return "redirect:/categorylist"; // return to categorylist.html
+			return "redirect:/categorylist"; // return to /categorylist endpoint
 		}
 }
